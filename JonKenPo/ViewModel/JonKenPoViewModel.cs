@@ -21,7 +21,6 @@ namespace JonKenPo.ViewModel
         }
 
 
-
         [ObservableProperty]
         public string _nome;
 
@@ -33,6 +32,7 @@ namespace JonKenPo.ViewModel
 
         [ObservableProperty]
         public string _escolhapicker;
+
 
 
         private ObservableCollection<Jogador> _jogadores = new ObservableCollection<Jogador>();  //cria colecao de uma lista
@@ -50,12 +50,10 @@ namespace JonKenPo.ViewModel
             Jogador jogador = new Jogador(Nome, Escolha, Pontuacao);
             _jogadores.Add(jogador);
 
-            
-
-            
-
-            //_characters.Add(new Character(Name, Classe, Nivel, Race)); outro jeito de faz
+            int maqueico = new Jogo(Escolha());
         }
+
+
 
     }
 }

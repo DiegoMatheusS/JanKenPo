@@ -8,13 +8,16 @@ namespace JonKenPo.Model
 {
     public class Jogo
     {
-        public int Papel { get; set; }
+        public int Side { get; set; }
 
-        public int Pedra { get; set; } 
+        public Jogo(int side)
+        {
+            Side = side;
+        }
 
-        public int Tesoura { get; set; }
-
+        public int Roll()
+        {
+            return new Random().Next(Side);
+        }
     }
-    
-
 }
