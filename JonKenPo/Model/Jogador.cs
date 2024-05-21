@@ -22,7 +22,14 @@ namespace JonKenPo.Model
         public int Pontuacao { get; set; }
     }
 
+    public enum Escolha
+    {
+        Papel,
+        Pedra,
+        Tesoura
+    }
 
 
-  
+
+
 }

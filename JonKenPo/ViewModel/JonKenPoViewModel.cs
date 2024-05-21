@@ -50,9 +50,11 @@ namespace JonKenPo.ViewModel
             Jogador jogador = new Jogador(Nome, Escolha, Pontuacao);
             _jogadores.Add(jogador);
 
-            int maqueico = new Jogo(Escolha());
         }
-
+        public void AddRandom()
+        {
+            Escolha random = new Random().Next(Escolha(), 3) + 1;
+        }
 
 
     }
