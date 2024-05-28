@@ -17,7 +17,7 @@
              />
         <HorizontalStackLayout>
         <Label 
-            Margin="0,100,0,50"
+            Margin="5,100,0,50"
             Text="Digite seu Nome: "
             TextColor="DarkRed"
             FontAttributes="Bold"
@@ -28,7 +28,7 @@
         <Entry
             Text="{Binding Nome}"
               WidthRequest="150"
-            HeightRequest="25"
+            HeightRequest="50"
              FontSize="18"
              Margin="30,80,0,50"
 
@@ -37,11 +37,11 @@
 
 
         <Picker
-          
+         
          TitleColor="Black"
          WidthRequest="300"
          Title="Escolha">
-            <Picker.ItemsSource ItemsSource="{Binding Escolha}">
+            <Picker.ItemsSource ItemsSource="{Binding Jogador}">
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Pedra</x:String>
                     <x:String>Papel</x:String>
@@ -60,14 +60,14 @@
         FontAttributes="Bold"
         WidthRequest="300"
         Text="JOGAR" 
-        Command="{Binding CreateJogadorCommand}"
+        Command="{Binding MakeChoiceCommand}"
         
         />
         <HorizontalStackLayout>
             <Label 
             Text="{Binding Nome}"
             FontSize="30"
-            Margin="50,-30,0,0"
+            Margin="55,-30,0,0"
             TextColor="DarkGreen"
             FontAttributes="Bold"
       />
@@ -89,7 +89,7 @@
         </HorizontalStackLayout>
         <HorizontalStackLayout>
                 <Label 
-            Text="0 "
+            Text="0"
             FontSize="30"
              TextColor="DarkRed"
             Margin="150,0,0,0"
@@ -101,7 +101,7 @@
       />                
                 
                 <Label 
-            Text=" 0"
+            Text="0"
             TextColor="DarkRed"
             FontSize="30"
             
@@ -109,24 +109,24 @@
             </HorizontalStackLayout>
            
         <Label 
-            Text="Pedra"
+            Text="{Binding DetermineWinner}"
             TextColor="DarkRed"
             FontSize="30"
              FontAttributes="Bold"
             HorizontalOptions="Center"
-            Margin="-50,30,0,50"
+            Margin="0,30,0,50"
             
       />
         <HorizontalStackLayout>
             <Label        
-            Text="Vencedor: "
+            Text="Vencedor:  "
             TextColor="DarkRed"
             FontSize="30" 
             FontAttributes="Bold"
+            Margin="10,0,0,0"
       />
             <Label 
-            Text=""
-            
+            Text="{Binding DetermineWinner}"
             FontSize="30"
            Margin="50,0,0,0"
       />            

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace JonKenPo.Model
 {
-    public static class Jogo
+    public enum Opcao
     {
-        public static Opcao DartPontuacao(Opcao opcao)
-        {
-            return 0;
-        }
+        PEDRA = 0,
+        PAPEL = 1,
+        TESOURA = 2
     }
 }

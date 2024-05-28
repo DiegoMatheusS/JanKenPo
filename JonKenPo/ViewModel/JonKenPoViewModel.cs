@@ -15,47 +15,70 @@ namespace JonKenPo.ViewModel
 {
     public partial class JonKenPoViewModel : ObservableObject
     {
-        public JonKenPoViewModel() {
-
-            CreateJogadorCommand = new Command(Add);
-        }
-
-
-        [ObservableProperty]
-        public string _nome;
-
-        [ObservableProperty]
-        public string _escolha;
-
-        [ObservableProperty]
-        public int _pontuacao;
-
-        [ObservableProperty]
-        public string _escolhapicker;
-
-
-
-        private ObservableCollection<Jogador> _jogadores = new ObservableCollection<Jogador>();  //cria colecao de uma lista
-        public ObservableCollection<Jogador> Jogador
+        public JonKenPoViewModel()
         {
-            get { return _jogadores; }
-            set { _jogadores = value; }
+            Jogador = new Jogador(Nome);
+            Maquina = new Jogador("Maquina");
+            MakeChoiceCommand = new Command (MakeChoice);
         }
 
-        public ICommand CreateJogadorCommand { get; } //pegar comando do botao
 
-        public void Add()
+        [ObservableProperty]
+        private string _nome;
+
+        [ObservableProperty]
+        private Jogador _jogador;
+
+        [ObservableProperty]
+        private Jogador _maquina;
+
+        [ObservableProperty]
+        private Opcao _escolha;
+
+        [ObservableProperty]
+        private string _result;
+
+        [ObservableProperty]
+        private string _enemyImage;
+
+        [ObservableProperty]
+        private string _playerImage;
+
+        [ObservableProperty]
+        private int _pontuacao;
+
+
+        public ICommand MakeChoiceCommand { get; }
+        private void MakeChoice()
         {
-            
-            Jogador jogador = new Jogador(Nome, Escolha, Pontuacao);
-            _jogadores.Add(jogador);
-
+            Jogador.Nome = Nome;
+            Jogador.Escolha = Escolha;
+            Maquina.Escolha = (Opcao)new Random().Next(0, 3); //pega os numeros aleatorios da model Escolha
+            EnemyImage = $"{Maquina.Escolha}.png";
+            PlayerImage = $"{Jogador.Escolha}.png";
+            DetermineWinner();
+            Pontuacao = Jogador.Pontuacao;
         }
-        public void AddRandom()
+        private void DetermineWinner()
         {
-            Escolha random = new Random().Next(Escolha(), 3) + 1;
+            if (Jogador.Escolha == Maquina.Escolha)
+            {
+                Jogador.Pontuacao++;
+                Maquina.Pontuacao++;
+                Result = "Empate!";
+            }
+            else if((Jogador.Escolha == Opcao.PEDRA && Maquina.Escolha == Opcao.TESOURA)||
+                    (Jogador.Escolha == Opcao.PEDRA && Maquina.Escolha == Opcao.PEDRA) ||
+                    (Jogador.Escolha == Opcao.PEDRA && Maquina.Escolha == Opcao.PAPEL))
+            {           
+                Jogador.Pontuacao += 3;
+                Result = $"{Jogador.Nome} Venceu!";
+            }
+            else
+            {
+                Maquina.Escolha +=3;
+                Result = $"{Maquina.Nome} Venceu!";
+            }
         }
-
-
     }
 }

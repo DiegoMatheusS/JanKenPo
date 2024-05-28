@@ -8,28 +8,15 @@ namespace JonKenPo.Model
 {
     public class Jogador
     {
-        public Jogador(string nome, string escolha, int pontuacao)
-        {
-            Nome = nome;
-            Escolha = escolha;
-            Pontuacao = pontuacao;
-        }
 
         public string Nome { get; set; }
-
-        public string Escolha{ get; set; }
-
+        public Opcao Escolha{ get; set; }
         public int Pontuacao { get; set; }
-    }
-
-    public enum Escolha
-    {
-        Papel,
-        Pedra,
-        Tesoura
-    }
 
 
-
-
+        public Jogador(string nome)
+        {
+            Nome = nome;
+        }
+    }  
 }
